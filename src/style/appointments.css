@@ -1,0 +1,17 @@
+#background-pane{
+	-fx-background-image: url('./home.jpg');
+	-fx-background-position: stretch;
+}
+.white-text{
+	/* -fx-text-fill: white; */
+	/* -fx-text-inner-color: white; */
+	-fx-font-size: 14.0;
+}
+#green-background{
+	-fx-background-color: green;
+}
+.white-inner-text{
+	-fx-text-fill: white;
+	-fx-text-inner-color: white;
+	-fx-prompt-text-fill:white;
+}

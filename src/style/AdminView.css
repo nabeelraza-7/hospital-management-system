@@ -1,0 +1,44 @@
+#background-pane{
+	-fx-background-image: url('./home.jpg');
+	/* -fx-font-family: 'Poppins'; */
+	-fx-font-family: Poppins;
+}
+.tab{
+	-fx-background-color: transparent;
+}
+.tab-header-background {
+    -fx-opacity: 0;
+}
+*.tab-header-area {
+    -fx-background-insets: 0, 0 0 1 0;
+ /* -fx-padding: 0.416667em 0.166667em 0.0em 0.833em; /* 5 2 0 10 */
+    -fx-padding: 0.416667em 0.166667em 0.0em 0.0em; /* overridden as 5 2 0 0 */
+}
+.tab:selected{
+	-fx-background-color: black;
+}
+.tab-label { 
+	-fx-alignment: CENTER;
+	-fx-text-fill: white;
+}
+.tab:selected .tab-label { 
+    -fx-alignment: CENTER;
+    -fx-text-fill: #96b946;
+}
+.bold-text{
+	-fx-font-weight: bold;
+}
+.big-text{
+	-fx-font-size: 24px;
+}
+.spinner .increment-arrow-button,
+.spinner .decrement-arrow-button {
+    /* -fx-body-color: yellow; */
+    -fx-background-radius: none;
+    -fx-background-color: white;
+    -fx-cursor: hand;
+}
+.spinner .text-field{
+    -fx-background-radius: none;
+    -fx-background-color: white;
+}

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTimePicker?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="background-pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="800.0" stylesheets="@../style/doctor.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="doctor.EditDoctorController">
+   <children>
+      <StackPane layoutX="169.0" layoutY="8.0" prefHeight="671.0" prefWidth="481.0" AnchorPane.bottomAnchor="21.0" AnchorPane.leftAnchor="169.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="8.0">
+         <children>
+            <Rectangle arcHeight="60.0" arcWidth="60.0" fill="#1fff22" height="616.0" opacity="0.66" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="392.0" />
+            <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="518.0" prefWidth="280.0" spacing="20.0">
+               <children>
+                  <JFXTextField id="nameid" fx:id="nameField" focusColor="WHITE" labelFloat="true" minWidth="-Infinity" prefHeight="39.0" prefWidth="281.0" promptText="Name" styleClass="white-text-prompt" unFocusColor="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </JFXTextField>
+                  <JFXTextField id="nameid" fx:id="phoneNoField" focusColor="WHITE" labelFloat="true" prefHeight="39.0" prefWidth="290.0" promptText="Phone No" styleClass="white-text-prompt" unFocusColor="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </JFXTextField>
+                  <JFXTextField id="nameid" fx:id="specialization" focusColor="WHITE" labelFloat="true" prefHeight="39.0" prefWidth="289.0" promptText="Specialization" styleClass="white-text-prompt" unFocusColor="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </JFXTextField>
+                  <VBox>
+                     <children>
+                        <Label prefWidth="286.0" text="Starting Time" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <JFXTimePicker fx:id="timeFromField" defaultColor="#134316" prefHeight="28.0" prefWidth="308.0" styleClass="white-text" />
+                     </children>
+                  </VBox>
+                  <VBox>
+                     <children>
+                        <Label prefWidth="286.0" text="Ending Time" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <JFXTimePicker fx:id="timeToField" defaultColor="#134316" prefHeight="28.0" prefWidth="308.0" styleClass="white-text" />
+                     </children>
+                  </VBox>
+                  <JFXTextField id="emailid" fx:id="emailField" focusColor="WHITE" labelFloat="true" prefHeight="39.0" prefWidth="300.0" promptText="Email" styleClass="white-text-prompt" unFocusColor="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </JFXTextField>
+                  <JFXPasswordField id="passwordid" fx:id="passwordField" focusColor="WHITE" labelFloat="true" prefHeight="39.0" prefWidth="295.0" promptText="Password" styleClass="white-text-prompt" unFocusColor="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </JFXPasswordField>
+                  <JFXPasswordField id="passwordid" fx:id="confirmPasswordField" focusColor="WHITE" labelFloat="true" prefHeight="39.0" prefWidth="296.0" promptText="Confirm Password" styleClass="white-text-prompt" unFocusColor="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </JFXPasswordField>
+                  <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" graphicTextGap="0.0" onAction="#submit" prefHeight="41.0" prefWidth="161.0" ripplerFill="WHITE" style="-fx-background-color: white;" text="Submit" wrapText="true">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </VBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <effect>
+                        <DropShadow blurType="GAUSSIAN" height="47.69" radius="24.8275" spread="0.02" width="53.62" />
+                     </effect>
+                  </JFXButton>
+               </children>
+            </VBox>
+         </children>
+      </StackPane>
+      <Label alignment="TOP_LEFT" layoutX="14.0" layoutY="14.0" prefHeight="30.0" prefWidth="154.0" text="Doctor Form" textFill="WHITE" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="107.0" fitWidth="91.0" layoutX="482.0" layoutY="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
+         <image>
+            <Image url="@../style/doctor.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

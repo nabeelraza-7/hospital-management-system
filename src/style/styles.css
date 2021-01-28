@@ -1,0 +1,53 @@
+
+#background-pane{
+    -fx-background-image: url("./home.jpg");
+    -fx-background-repeat: stretch;
+}
+#text-field1,#text-field2{
+    -fx-font-family: Poppins;
+    -fx-background-radius: none;
+}
+.text-fields{
+    -fx-text-fill: white;
+    -fx-text-inner-color: white;
+    -fx-prompt-text-fill: white;
+
+}
+#button{
+    -fx-background-radius: none;
+    -fx-font-family: poppins;
+    -fx-background-color: green;
+    -fx-cursor: hand;
+    /* -fx-effect: dropshadow(gaussian, red, 50, 0, 0, 0); */
+}
+.button:hover{
+    -fx-background-radius: none;
+    -fx-cursor: hand;
+    /* -fx-effect: dropshadow(gaussian, red, 50, 0, 0, 0); */
+}
+.spinner .increment-arrow-button,
+.spinner .decrement-arrow-button {
+    /* -fx-body-color: yellow; */
+    -fx-background-radius: none;
+    -fx-background-color: white;
+    -fx-cursor: hand;
+}
+.spinner .text-field{
+    -fx-background-radius: none;
+    -fx-background-color: white;
+}
+.bold-text{
+	-fx-font-weight: bold;
+}
+.big-text{
+	-fx-font-size: 24px;
+}
+.white-text {
+	-fx-text-fill: white;
+	-fx-color: white;
+    -fx-text-inner-color: white;
+    -fx-prompt-text-fill:white;
+}
+.little-big-text{
+	-fx-font-size: 16px;
+}

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="background-pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1080.0" stylesheets="@../style/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="login.LoginController">
+   <children>
+      <StackPane layoutX="385.0" layoutY="90.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="340.0" prefWidth="400.0" AnchorPane.bottomAnchor="130.0" AnchorPane.leftAnchor="340.0" AnchorPane.rightAnchor="340.0" AnchorPane.topAnchor="130.0">
+         <children>
+            <Rectangle arcHeight="60.0" arcWidth="60.0" fill="#15b210" height="400.0" opacity="0.75" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="470.0" />
+            <VBox id="nostylebox" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="340.0" prefWidth="400.0" spacing="20.0">
+               <children>
+                  <ImageView fitHeight="147.0" fitWidth="366.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../style/icon1.png" />
+                     </image>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </ImageView>
+                  <JFXTextField id="text-field2" fx:id="emailField" focusColor="WHITE" labelFloat="true" promptText="Type email here" unFocusColor="WHITE">
+                     <font>
+                        <Font name="Consolas Bold" size="16.0" />
+                     </font>
+                     <styleClass>
+                        <String fx:value="bold-text" />
+                        <String fx:value="white-text" />
+                        <String fx:value="little-big-text" />
+                     </styleClass>
+                  </JFXTextField>
+                  <JFXPasswordField id="text-field1" fx:id="passField" focusColor="WHITE" labelFloat="true" promptText="Type password here" unFocusColor="WHITE">
+                     <font>
+                        <Font name="Consolas Bold" size="16.0" />
+                     </font>
+                     <styleClass>
+                        <String fx:value="bold-text" />
+                        <String fx:value="white-text" />
+                        <String fx:value="little-big-text" />
+                     </styleClass>
+                  </JFXPasswordField>
+                  <JFXButton buttonType="RAISED" onAction="#checkLogin" prefHeight="56.0" prefWidth="123.0" ripplerFill="WHITE" style="-fx-background-color: white;" text="Log In">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+               <padding>
+                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+               </padding>
+            </VBox>
+         </children>
+      </StackPane>
+   </children>
+</AnchorPane>

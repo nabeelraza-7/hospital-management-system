@@ -1,0 +1,20 @@
+#background-pane{
+	-fx-background-image: url('./home.jpg');
+	/* -fx-font-family: 'Poppins'; */
+	-fx-font-family: Poppins;
+}
+.bold-text{
+	-fx-font-weight: bold;
+}
+.big-text{
+	-fx-font-size: 24px;
+}
+.white-text {
+	-fx-text-fill: white;
+	-fx-color: white;
+    -fx-text-inner-color: white;
+    -fx-prompt-text-fill:white;
+}
+.little-big-text{
+	-fx-font-size: 16px;
+}
