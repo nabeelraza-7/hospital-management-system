@@ -679,8 +679,8 @@ public class Database {
         }
         return false;
     }
-
     // ENDING appointments
+
     public boolean emailExists(String email) {
         boolean checked_admins = false;
         boolean checked_doctor = false;
