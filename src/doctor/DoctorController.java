@@ -1,6 +1,9 @@
 package doctor;
 
 import java.io.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
@@ -44,9 +47,6 @@ public class DoctorController {
     @FXML // fx:id="patPrescription"
     private TextArea patPrescription; // Value injected by FXMLLoader
 
-    @FXML // fx:id="bedRequiredCheckBox"
-    private JFXCheckBox bedRequiredCheckBox; // Value injected by FXMLLoader
-
     @FXML // fx:id="medicine"
     private TextField medicine; // Value injected by FXMLLoader
 
@@ -76,22 +76,24 @@ public class DoctorController {
     }
 
     private void writeFile() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-YYYY");
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("hh:mm");
+        LocalDate date = LocalDate.now();
+        LocalTime time = LocalTime.now();
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("prescription.txt"))) {
             writer.write("================================= Medical Report =================================\n\n");
             writer.write("Patient ID: " + current.getId() + "\n");
             writer.write("Name:       " + current.getName() + "\n");
             writer.write("Age:        " + current.getAge() + "\n");
             writer.write("Phone No:   " + current.getPhoneNo() + "\n");
-            writer.write("Address:    " + current.getAddress() + "\n\n");
+            writer.write("Address:    " + current.getAddress() + "\n");
+            writer.write("DateTime:   " + formatter.format(date) + "  " + timeFormatter.format(time) + "\n\n");
             writer.write("==================================== Symptoms ====================================\n\n");
             writer.write(current.getSymptoms() + "\n\n");
             writer.write("================================== Prescription ==================================\n\n");
             writer.write(current.getPrescription() + "\n\n");
             writer.write("==================================================================================\n\n");
-            if (bedRequiredCheckBox.isSelected()) {
-                writer.write("--> Requires bed\n");
-                writer.write("==================================================================================\n\n");
-            }
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -99,15 +101,6 @@ public class DoctorController {
 
     @FXML
     void saveRecord(ActionEvent event) {
-        System.out.println(patComboBox.getValue());
-        if (bedRequiredCheckBox.isSelected()) {
-            int numBeds = db.getBeds();
-            if (db.getTotalBeds() <= numBeds) {
-                db.setBeds(numBeds - 1);
-            } else {
-                FormValidation.showError("Limited Resources", "No more beds can be alotted.");
-            }
-        }
         if (index > 0) {
             current.setChecked(true);
             current.setName(patName.getText());
@@ -125,7 +118,6 @@ public class DoctorController {
         patAge.setText("");
         patSymptoms.setText("");
         patPrescription.setText("");
-        bedRequiredCheckBox.setSelected(false);
         saveBtn.setDisable(true);
     }
 
@@ -150,7 +142,6 @@ public class DoctorController {
         patAge.setDisable(false);
         patSymptoms.setDisable(false);
         patPrescription.setDisable(false);
-        bedRequiredCheckBox.setDisable(false);
         index = patComboBox.getSelectionModel().getSelectedIndex();
         if (index != 0) {
             current = list.get(index - 1);
@@ -163,12 +154,10 @@ public class DoctorController {
             patAge.setText("");
             patSymptoms.setText("");
             patPrescription.setText("");
-            bedRequiredCheckBox.setSelected(false);
             patName.setDisable(true);
             patAge.setDisable(true);
             patSymptoms.setDisable(true);
             patPrescription.setDisable(true);
-            bedRequiredCheckBox.setDisable(true);
         }
     }
 
@@ -179,7 +168,6 @@ public class DoctorController {
         patAge.setDisable(true);
         patSymptoms.setDisable(true);
         patPrescription.setDisable(true);
-        bedRequiredCheckBox.setDisable(true);
         listOfNames.add("Select Patient");
         list.forEach((items) -> {
             listOfNames.add(items.getName());
@@ -219,6 +207,11 @@ public class DoctorController {
         }
         medicine.setText("");
         duration.setText("");
+    }
+
+    @FXML
+    void admitPatient(ActionEvent event) {
+
     }
 
 }
