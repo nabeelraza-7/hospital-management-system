@@ -48,7 +48,7 @@
                         <String fx:value="little-big-text" />
                      </styleClass>
                   </JFXPasswordField>
-                  <JFXButton buttonType="RAISED" onAction="#checkLogin" prefHeight="56.0" prefWidth="123.0" ripplerFill="WHITE" style="-fx-background-color: white;" text="Log In">
+                  <JFXButton buttonType="RAISED" defaultButton="true" onAction="#checkLogin" prefHeight="56.0" prefWidth="123.0" ripplerFill="WHITE" style="-fx-background-color: white;" text="Log In">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>

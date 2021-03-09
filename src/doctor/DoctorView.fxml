@@ -24,7 +24,7 @@
             <String fx:value="bold-text" />
          </styleClass>
       </Label>
-      <HBox alignment="CENTER" layoutX="36.0" layoutY="84.0" AnchorPane.leftAnchor="36.0" AnchorPane.rightAnchor="36.0">
+      <HBox alignment="CENTER" layoutX="36.0" layoutY="84.0" spacing="10.0" AnchorPane.leftAnchor="36.0" AnchorPane.rightAnchor="36.0">
          <children>
             <VBox prefHeight="515.0" prefWidth="512.0" spacing="10.0">
                <children>
@@ -56,6 +56,29 @@
                         <Font size="16.0" />
                      </font>
                   </TextArea>
+                  <HBox prefHeight="35.0" prefWidth="562.0" spacing="20.0">
+                     <children>
+                        <TextField fx:id="medicine" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="37.0" prefWidth="244.0" promptText="Medicine" style="-fx-background-radius: none; -fx-background-color: white;">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="duration" layoutX="10.0" layoutY="10.0" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="37.0" prefWidth="244.0" promptText="Duration" style="-fx-background-radius: none; -fx-background-color: white;">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </TextField>
+                        <JFXButton onAction="#addToPrescription" prefHeight="37.0" prefWidth="46.0" style="-fx-background-color: white;" text="+">
+                           <styleClass>
+                              <String fx:value="little-big-text" />
+                              <String fx:value="bold-text" />
+                           </styleClass>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </JFXButton>
+                     </children>
+                  </HBox>
                   <Label text="Prescription: ">
                      <styleClass>
                         <String fx:value="little-big-text" />
@@ -63,7 +86,7 @@
                         <String fx:value="white-text" />
                      </styleClass>
                   </Label>
-                  <TextArea fx:id="patPrescription" prefHeight="199.0" prefWidth="468.0" promptText="Type here..." style="-fx-background-radius: none;" VBox.vgrow="ALWAYS">
+                  <TextArea fx:id="patPrescription" prefHeight="175.0" prefWidth="510.0" promptText="Type here..." style="-fx-background-radius: none;" VBox.vgrow="ALWAYS">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -98,6 +121,15 @@
                      </cursor>
                   </JFXButton>
                   <JFXButton layoutX="10.0" layoutY="92.0" onAction="#refresh" prefHeight="25.0" prefWidth="180.0" style="-fx-background-color: white;" text="refresh">
+                     <styleClass>
+                        <String fx:value="little-big-text" />
+                        <String fx:value="bold-text" />
+                     </styleClass>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXButton>
+                  <JFXButton layoutX="10.0" layoutY="139.0" onAction="#logout" prefHeight="25.0" prefWidth="180.0" style="-fx-background-color: white;" text="Log Out">
                      <styleClass>
                         <String fx:value="little-big-text" />
                         <String fx:value="bold-text" />

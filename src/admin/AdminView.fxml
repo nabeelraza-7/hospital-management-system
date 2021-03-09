@@ -22,82 +22,102 @@
         <tabs>
           <Tab closable="false" text="Home">
             <content>
-                  <TilePane alignment="CENTER" hgap="5.0" vgap="5.0">
+                  <AnchorPane>
                      <children>
-                        <JFXButton buttonType="RAISED" onAction="#openAdminForm" prefHeight="234.0" prefWidth="224.0" style="-fx-background-color: white;" text="Add new Admin" wrapText="true">
-                           <font>
-                              <Font name="System Bold" size="24.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                           <styleClass>
-                              <String fx:value="bold-text" />
-                              <String fx:value="big-text" />
-                           </styleClass>
-                        </JFXButton>
-                        <JFXButton buttonType="RAISED" onAction="#openDoctorForm" prefHeight="234.0" prefWidth="224.0" style="-fx-background-color: white;" text="Add new Doctor" wrapText="true">
-                           <font>
-                              <Font name="System Bold" size="24.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                           <styleClass>
-                              <String fx:value="bold-text" />
-                              <String fx:value="big-text" />
-                           </styleClass>
-                        </JFXButton>
-                        <JFXButton buttonType="RAISED" onAction="#openPatientForm" prefHeight="234.0" prefWidth="224.0" style="-fx-background-color: white;" text="Add new Patient" wrapText="true">
-                           <font>
-                              <Font name="System Bold" size="24.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                           <styleClass>
-                              <String fx:value="bold-text" />
-                              <String fx:value="big-text" />
-                           </styleClass>
-                        </JFXButton>
-                        <JFXButton buttonType="RAISED" layoutX="10.0" layoutY="10.0" onAction="#openReceptionistForm" prefHeight="234.0" prefWidth="224.0" style="-fx-background-color: white;" text="Add new Recptionist" wrapText="true">
-                           <font>
-                              <Font name="System Bold" size="24.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                           <styleClass>
-                              <String fx:value="bold-text" />
-                              <String fx:value="big-text" />
-                           </styleClass>
-                        </JFXButton>
-                        <JFXButton buttonType="RAISED" layoutX="10.0" layoutY="244.0" onAction="#openStaffForm" prefHeight="234.0" prefWidth="224.0" style="-fx-background-color: white;" text="Add new Staff Member" wrapText="true">
-                           <font>
-                              <Font name="System Bold" size="24.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                           <styleClass>
-                              <String fx:value="bold-text" />
-                              <String fx:value="big-text" />
-                           </styleClass>
-                        </JFXButton>
-                        <JFXButton buttonType="RAISED" layoutX="413.0" layoutY="298.0" onAction="#createAppointment" prefHeight="234.0" prefWidth="224.0" style="-fx-background-color: white;" text="Add new Appointment" wrapText="true">
-                           <font>
-                              <Font name="System Bold" size="24.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                           <styleClass>
-                              <String fx:value="bold-text" />
-                              <String fx:value="big-text" />
-                           </styleClass>
-                        </JFXButton>
+                        <TilePane alignment="CENTER" hgap="5.0" layoutX="15.0" maxHeight="-Infinity" maxWidth="-Infinity" prefColumns="3" prefHeight="570.0" prefRows="2" prefWidth="765.0" vgap="5.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <JFXButton buttonType="RAISED" onAction="#openAdminForm" prefHeight="234.0" prefWidth="224.0" style="-fx-background-color: white;" text="Add new Admin" wrapText="true">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <styleClass>
+                                    <String fx:value="bold-text" />
+                                    <String fx:value="big-text" />
+                                 </styleClass>
+                              </JFXButton>
+                              <JFXButton buttonType="RAISED" onAction="#openDoctorForm" prefHeight="234.0" prefWidth="224.0" style="-fx-background-color: white;" text="Add new Doctor" wrapText="true">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <styleClass>
+                                    <String fx:value="bold-text" />
+                                    <String fx:value="big-text" />
+                                 </styleClass>
+                              </JFXButton>
+                              <JFXButton buttonType="RAISED" onAction="#openPatientForm" prefHeight="234.0" prefWidth="224.0" style="-fx-background-color: white;" text="Add new Patient" wrapText="true">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <styleClass>
+                                    <String fx:value="bold-text" />
+                                    <String fx:value="big-text" />
+                                 </styleClass>
+                              </JFXButton>
+                              <JFXButton buttonType="RAISED" layoutX="10.0" layoutY="10.0" onAction="#openReceptionistForm" prefHeight="234.0" prefWidth="224.0" style="-fx-background-color: white;" text="Add new Recptionist" wrapText="true">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <styleClass>
+                                    <String fx:value="bold-text" />
+                                    <String fx:value="big-text" />
+                                 </styleClass>
+                              </JFXButton>
+                              <JFXButton buttonType="RAISED" layoutX="10.0" layoutY="244.0" onAction="#openStaffForm" prefHeight="234.0" prefWidth="224.0" style="-fx-background-color: white;" text="Add new Staff Member" wrapText="true">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <styleClass>
+                                    <String fx:value="bold-text" />
+                                    <String fx:value="big-text" />
+                                 </styleClass>
+                              </JFXButton>
+                              <JFXButton buttonType="RAISED" layoutX="413.0" layoutY="298.0" onAction="#createAppointment" prefHeight="234.0" prefWidth="224.0" style="-fx-background-color: white;" text="Add new Appointment" wrapText="true">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <styleClass>
+                                    <String fx:value="bold-text" />
+                                    <String fx:value="big-text" />
+                                 </styleClass>
+                              </JFXButton>
+                           </children>
+                        </TilePane>
+                        <HBox alignment="CENTER" layoutX="-3.0" layoutY="487.0" prefHeight="51.0" prefWidth="882.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                           <children>
+                              <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#logout" prefHeight="51.0" prefWidth="193.0" style="-fx-background-color: white;" text="Log Out" wrapText="true">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <styleClass>
+                                    <String fx:value="bold-text" />
+                                    <String fx:value="big-text" />
+                                 </styleClass>
+                              </JFXButton>
+                           </children>
+                        </HBox>
                      </children>
-                  </TilePane>
+                  </AnchorPane>
             </content>
           </Tab>
             <Tab closable="false" text="Doctors">

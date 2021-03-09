@@ -5,12 +5,18 @@ import java.io.*;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.stage.Stage;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import patient.Patient;
 import utilities.Database;
@@ -40,6 +46,12 @@ public class DoctorController {
 
     @FXML // fx:id="bedRequiredCheckBox"
     private JFXCheckBox bedRequiredCheckBox; // Value injected by FXMLLoader
+
+    @FXML // fx:id="medicine"
+    private TextField medicine; // Value injected by FXMLLoader
+
+    @FXML // fx:id="duration"
+    private TextField duration; // Value injected by FXMLLoader
 
     @FXML
     private JFXButton saveBtn;
@@ -128,6 +140,8 @@ public class DoctorController {
         list.forEach((items) -> {
             listOfNames.add(items.getName());
         });
+        medicine.setText("");
+        duration.setText("");
     }
 
     @FXML
@@ -172,4 +186,39 @@ public class DoctorController {
         });
         patComboBox.setItems(listOfNames);
     }
+
+    @FXML
+    void logout(ActionEvent event) {
+        String path = "src/login/Login.fxml";
+        Platform.runLater(() -> {
+            openForm(path);
+        });
+        Stage stage = (Stage) patComboBox.getScene().getWindow();
+        stage.close();
+    }
+
+    public void openForm(String path) {
+        Parent root;
+        try {
+            root = new FXMLLoader(new File(path).toURI().toURL()).load();
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.getIcons().add(new Image("/style/hospital.png"));
+            stage.setTitle("Hospital Management System");
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+    @FXML
+    void addToPrescription(ActionEvent event) {
+        if (!(medicine.getText().isEmpty() && duration.getText().isEmpty())){
+            patPrescription.appendText(medicine.getText() + "\t\t" + duration.getText() + "\n");
+        }
+        medicine.setText("");
+        duration.setText("");
+    }
+
 }

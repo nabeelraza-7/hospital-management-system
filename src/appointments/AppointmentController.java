@@ -37,7 +37,7 @@ public class AppointmentController {
     private LocalTime availableTime = null;
 
     @FXML
-    private JFXButton makeAppBtn;
+    private JFXButton makeAppBtn;// Make appointment button
     @FXML // fx:id="patNameField"
     private JFXTextField patNameField; // Value injected by FXMLLoader
 

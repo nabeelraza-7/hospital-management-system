@@ -20,14 +20,6 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = new FXMLLoader(new File("src/login/Login.fxml").toURI().toURL()).load();
-        // Parent root = new FXMLLoader(new
-        // File("src/admin/AdminView.fxml").toURI().toURL()).load();
-        // Parent root = new FXMLLoader(new
-        // File("src/doctor/DoctorView.fxml").toURI().toURL()).load();
-        // Parent root = new FXMLLoader(new
-        // File("src/receptionist/ReceptionistView.fxml").toURI().toURL()).load();
-        // Parent root = new FXMLLoader(new
-        // File("src/appointments/Appointments.fxml").toURI().toURL()).load();
         Scene scene = new Scene(root);
         stage.getIcons().add(new Image("/style/hospital.png"));
         stage.setTitle("Hospital Management System");

@@ -764,4 +764,14 @@ public class AdminController {
         bedsOccupied.setText("" + (db.getTotalBeds() - db.getBeds()));
         bedsRemaining.setText("" + db.getBeds());
     }
+
+    @FXML
+    void logout(ActionEvent event) {
+        String path = "src/login/Login.fxml";
+        Platform.runLater(() -> {
+            openForm(path);
+        });
+        Stage stage = (Stage) totalBeds.getScene().getWindow();
+        stage.close();
+    }
 }
