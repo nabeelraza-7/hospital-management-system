@@ -4,10 +4,9 @@
 
 package patient;
 
-import java.io.*;
-
 import com.jfoenix.controls.JFXTextField;
 
+import admin.AdminController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Spinner;
@@ -42,15 +41,13 @@ public class EditPatientForm {
     @FXML
     void initialize() {
         formatSpinners();
-        temp = Patient.readFromFile();
+        temp = AdminController.patient;
         nameField.setText(temp.getName());
         phoneNoField.setText(temp.getPhoneNo());
         ageSpinner.getValueFactory().setValue(temp.getAge());
         addresField.setText(temp.getAddress());
         symptomsField.setText(temp.getSymptoms());
         billSpinner.getValueFactory().setValue(temp.getBill());
-        File file = new File("patient.txt");
-        file.delete();
     }
 
     private void formatSpinners() {

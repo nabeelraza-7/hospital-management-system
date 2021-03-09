@@ -39,6 +39,10 @@ import utilities.FormValidation;
 
 public class AdminController {
 
+    public static Doctor doctor;
+    public static Patient patient;
+    public static Receptionist receptionist;
+    public static Staff staff;
     private StringConverter<LocalTime> timeFormat;
 
     @FXML
@@ -435,7 +439,7 @@ public class AdminController {
         if (temp == null && tempSearch != null) {
             temp = tempSearch;
         }
-        temp.writeToFile();
+        doctor = temp;
         String path = "src/doctor/EditDoctorForm.fxml";
         Platform.runLater(() -> {
             openForm(path);
@@ -514,7 +518,7 @@ public class AdminController {
         if (temp == null && tempSearch != null) {
             temp = tempSearch;
         }
-        temp.writeToFile();
+        patient = temp;
         String path = "src/patient/EditPatientForm.fxml";
         Platform.runLater(() -> {
             openForm(path);
@@ -629,7 +633,7 @@ public class AdminController {
         if (temp == null && tempSearch != null) {
             temp = tempSearch;
         }
-        temp.writeToFile();
+        receptionist = temp;
         String path = "src/receptionist/EditReceptionistForm.fxml";
         Platform.runLater(() -> {
             openForm(path);
@@ -704,7 +708,7 @@ public class AdminController {
         if (temp == null && tempSearch != null) {
             temp = tempSearch;
         }
-        temp.writeToFile();
+        staff = temp;
         String path = "src/staff/EditStaffForm.fxml";
         Platform.runLater(() -> {
             openForm(path);

@@ -7,6 +7,9 @@ package staff;
 import java.io.*;
 
 import com.jfoenix.controls.JFXTextField;
+
+import admin.Admin;
+import admin.AdminController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.stage.Stage;
@@ -28,12 +31,10 @@ public class EditStaffForm {
 
     @FXML
     void initialize() {
-        temp = Staff.readFromFile();
+        temp = AdminController.staff;
         nameField.setText(temp.getName());
         phoneNoField.setText(temp.getPhoneNo());
         status.setText(temp.getStatus());
-        File file = new File("staff.txt");
-        file.delete();
     }
 
     @FXML

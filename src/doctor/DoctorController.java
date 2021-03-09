@@ -92,7 +92,6 @@ public class DoctorController {
             writer.write(current.getSymptoms() + "\n\n");
             writer.write("================================== Prescription ==================================\n\n");
             writer.write(current.getPrescription() + "\n\n");
-            writer.write("DateTime:   " + formatter.format(date) + "  " + timeFormatter.format(time) + "\n\n");
             writer.write("==================================================================================\n\n");
 
         } catch (Exception e) {
@@ -107,7 +106,7 @@ public class DoctorController {
             current.setName(patName.getText());
             current.setAge(Integer.parseInt(patAge.getText()));
             current.setSymptoms(patSymptoms.getText());
-            current.setPrescription(patPrescription.getText());
+            current.setPrescription(patPrescription.getText() + "\n\nDateTime:   " + formatter.format(date) + "  " + timeFormatter.format(time));
             db.editPatient(current);
             FormValidation.showInformation("Save", "Patient's Record has been saved!");
             list.remove(index - 1);
@@ -218,7 +217,7 @@ public class DoctorController {
             current.setName(patName.getText());
             current.setAge(Integer.parseInt(patAge.getText()));
             current.setSymptoms(patSymptoms.getText());
-            current.setPrescription(patPrescription.getText());
+            current.setPrescription(patPrescription.getText() + "\n\nDateTime:   " + formatter.format(date) + "  " + timeFormatter.format(time));
             db.editPatient(current);
             db.admitPatient(current.getId());
             FormValidation.showInformation("Note", "Patient has been admitted!");

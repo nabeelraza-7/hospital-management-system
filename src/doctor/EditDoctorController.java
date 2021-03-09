@@ -4,12 +4,13 @@
 
 package doctor;
 
-import java.io.*;
 import java.time.LocalTime;
 
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXTimePicker;
+
+import admin.AdminController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.stage.Stage;
@@ -44,7 +45,7 @@ public class EditDoctorController {
 
     @FXML
     void initialize() {
-        temp = Doctor.readFromFile();
+        temp = AdminController.doctor;
         nameField.setText(temp.getName());
         phoneNoField.setText(temp.getPhoneNo());
         specialization.setText(temp.getSpecialization());
@@ -53,8 +54,6 @@ public class EditDoctorController {
         emailField.setText(temp.getEmail());
         passwordField.setText(temp.getPassword());
         confirmPasswordField.setText(temp.getPassword());
-        File file = new File("doctor.txt");
-        file.delete();
     }
 
     @FXML

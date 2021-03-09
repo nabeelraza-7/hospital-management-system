@@ -1,22 +1,23 @@
 ================================= Medical Report =================================
 
-Patient ID: 16
-Name:       Patient 1
-Age:        21
-Phone No:   0321-9098123
-Address:    Duniya mein kahin
-DateTime:   10-03-2021  01:15
+Patient ID: 18
+Name:       Ab paka last patient
+Age:        56
+Phone No:   0345-1289469
+Address:    jahan bhi ho mujhe kya
 
 ==================================== Symptoms ====================================
 
-Blood loss
+sir dard hai ye -_-
 
 ================================== Prescription ==================================
 
-Drip		bari wali
+fghjg		afsdhgh
+asfgdfh		asfgdfh
+asdfdghf	asfgdhf
 
 
-DateTime:   10-03-2021  01:15
+DateTime:   10-03-2021  01:30
 
 ==================================================================================
 

@@ -1,9 +1,9 @@
 package receptionist;
 
-import java.io.*;
-
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
+
+import admin.AdminController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.stage.Stage;
@@ -30,14 +30,12 @@ public class EditReceptionistForm {
 
     @FXML
     void initialize() {
-        temp = Receptionist.readFromFile();
+        temp = AdminController.receptionist;
         nameField.setText(temp.getName());
         phoneNoField.setText(temp.getPhoneNo());
         emailField.setText(temp.getEmail());
         passwordField.setText(temp.getPassword());
         confirmPasswordField.setText(temp.getPassword());
-        File file = new File("receptionist.txt");
-        file.delete();
     }
 
     @FXML
