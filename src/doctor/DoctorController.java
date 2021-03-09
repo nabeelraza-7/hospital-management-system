@@ -31,6 +31,10 @@ public class DoctorController {
     Patient current = null;
     ObservableList<Patient> list = FXCollections.observableArrayList(db.getUncheckedPatients());
     ObservableList<String> listOfNames = FXCollections.observableArrayList();
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-YYYY");
+    DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("hh:mm");
+    LocalDate date = LocalDate.now();
+    LocalTime time = LocalTime.now();
 
     @FXML // fx:id="patComboBox"
     private ComboBox<String> patComboBox; // Value injected by FXMLLoader
@@ -63,7 +67,7 @@ public class DoctorController {
             current.setName(patName.getText());
             current.setAge(Integer.parseInt(patAge.getText()));
             current.setSymptoms(patSymptoms.getText());
-            current.setPrescription(patPrescription.getText());
+            current.setPrescription(patPrescription.getText() + "\n\nDateTime:   " + formatter.format(date) + "  " + timeFormatter.format(time));
         }
         writeFile();
         ProcessBuilder pb = new ProcessBuilder("Notepad.exe", "prescription.txt");
@@ -76,10 +80,7 @@ public class DoctorController {
     }
 
     private void writeFile() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-YYYY");
-        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("hh:mm");
-        LocalDate date = LocalDate.now();
-        LocalTime time = LocalTime.now();
+
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("prescription.txt"))) {
             writer.write("================================= Medical Report =================================\n\n");
             writer.write("Patient ID: " + current.getId() + "\n");
@@ -87,13 +88,13 @@ public class DoctorController {
             writer.write("Age:        " + current.getAge() + "\n");
             writer.write("Phone No:   " + current.getPhoneNo() + "\n");
             writer.write("Address:    " + current.getAddress() + "\n");
-            writer.write("DateTime:   " + formatter.format(date) + "  " + timeFormatter.format(time) + "\n\n");
             writer.write("==================================== Symptoms ====================================\n\n");
             writer.write(current.getSymptoms() + "\n\n");
             writer.write("================================== Prescription ==================================\n\n");
             writer.write(current.getPrescription() + "\n\n");
+            writer.write("DateTime:   " + formatter.format(date) + "  " + timeFormatter.format(time) + "\n\n");
             writer.write("==================================================================================\n\n");
-            
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -200,9 +201,10 @@ public class DoctorController {
         }
 
     }
+
     @FXML
     void addToPrescription(ActionEvent event) {
-        if (!(medicine.getText().isEmpty() && duration.getText().isEmpty())){
+        if (!(medicine.getText().isEmpty() && duration.getText().isEmpty())) {
             patPrescription.appendText(medicine.getText() + "\t\t" + duration.getText() + "\n");
         }
         medicine.setText("");
@@ -211,7 +213,25 @@ public class DoctorController {
 
     @FXML
     void admitPatient(ActionEvent event) {
-
+        if (index > 0) {
+            current.setChecked(true);
+            current.setName(patName.getText());
+            current.setAge(Integer.parseInt(patAge.getText()));
+            current.setSymptoms(patSymptoms.getText());
+            current.setPrescription(patPrescription.getText());
+            db.editPatient(current);
+            db.admitPatient(current.getId());
+            FormValidation.showInformation("Note", "Patient has been admitted!");
+            list.remove(index - 1);
+            listOfNames.remove(index);
+            patComboBox.getSelectionModel().selectFirst();
+            index = 0;
+        }
+        patName.setText("");
+        patAge.setText("");
+        patSymptoms.setText("");
+        patPrescription.setText("");
+        // saveBtn.setDisable(true);
     }
 
 }

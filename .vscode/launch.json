@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch Management",
+            "request": "launch",
+            "mainClass": "utilities.Management",
+            "projectName": "Hospital Management System_50d4e9b5"
+        },
+        {
+            "type": "java",
             "name": "Launch Launch",
             "request": "launch",
             "mainClass": "Launch",

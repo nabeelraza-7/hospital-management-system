@@ -1,21 +1,22 @@
 ================================= Medical Report =================================
 
-Patient ID: 15
-Name:       Eik aur Bimar
-Age:        16
-Phone No:   0359-9104009
-Address:    Mumtaz Hall
-DateTime:   09-03-2021  08:09
+Patient ID: 16
+Name:       Patient 1
+Age:        21
+Phone No:   0321-9098123
+Address:    Duniya mein kahin
+DateTime:   10-03-2021  01:15
 
 ==================================== Symptoms ====================================
 
-Exams
+Blood loss
 
 ================================== Prescription ==================================
 
-g		jh
-sdfg		af
+Drip		bari wali
 
+
+DateTime:   10-03-2021  01:15
 
 ==================================================================================
 
