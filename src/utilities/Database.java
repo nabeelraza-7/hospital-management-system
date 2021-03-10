@@ -824,6 +824,7 @@ public class Database {
             setBeds(getBeds() + 1);
             statement.setString(4, reason);
             statement.execute();
+            deleteAdmittedPatient(id);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -859,7 +860,7 @@ public class Database {
             while (results.next()) {
                 temp = new DischargedPatient(results.getString("name"), results.getInt("age"),
                         results.getString("phoneNo"), results.getString("address"), results.getString("symptoms"),
-                        results.getInt("id"), results.getDate("dateAdmitted").toLocalDate(),
+                        results.getInt("id"), results.getDate("dateDischarged").toLocalDate(),
                         results.getInt("bedNo"), results.getString("reason"));
                 list.add(temp);
             }
@@ -867,5 +868,27 @@ public class Database {
             e.printStackTrace();
         }
         return list;
+    }
+    public void deleteAdmittedPatient(int id) {
+        // DELETE FROM Admins WHERE id=?
+        String query = "DELETE FROM admitted WHERE patient_id=?";
+        try (Connection conn = DriverManager.getConnection(url, username, password)) {
+            PreparedStatement statement = conn.prepareStatement(query);
+            statement.setInt(1, id);
+            statement.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public void deleteDischargedPatient(int id) {
+        // DELETE FROM Admins WHERE id=?
+        String query = "DELETE FROM discharged WHERE patient_id=?";
+        try (Connection conn = DriverManager.getConnection(url, username, password)) {
+            PreparedStatement statement = conn.prepareStatement(query);
+            statement.setInt(1, id);
+            statement.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
