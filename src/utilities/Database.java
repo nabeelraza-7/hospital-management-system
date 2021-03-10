@@ -4,6 +4,9 @@ import admin.Admin;
 import appointments.Appointment;
 import doctor.Doctor;
 import java.util.ArrayList;
+
+import patient.AdmittedPatient;
+import patient.DischargedPatient;
 import patient.Patient;
 import receptionist.Receptionist;
 import staff.Staff;
@@ -95,34 +98,7 @@ public class Database {
             e.printStackTrace();
         }
     }
-    public void createAdmittedTable() {
-        /**
-         * Admitted ( patient_id integer PRIMARY KEY, name text NOT NULL, phoneNo text, age
-         * integer, address text, symptoms text, prescription text, bill real)
-         */
-        String query = "CREATE TABLE IF NOT EXISTS Admitted ( patient_id INT PRIMARY KEY, "
-                + " dateAdmitted DATE NOT NULL, bedNo INT NOT NULL);";
-        try (Connection conn = DriverManager.getConnection(url, username, password)) {
-            Statement statement = conn.createStatement();
-            statement.execute(query);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-    public void createDischargedTable() {
-        /**
-         * Admitted ( patient_id integer PRIMARY KEY, name text NOT NULL, phoneNo text, age
-         * integer, address text, symptoms text, prescription text, bill real)
-         */
-        String query = "CREATE TABLE IF NOT EXISTS Discharged ( patient_id INT PRIMARY KEY, "
-                + " dateDischarged DATE NOT NULL, bedNo INT NOT NULL, reason VARCHAR(55) );";
-        try (Connection conn = DriverManager.getConnection(url, username, password)) {
-            Statement statement = conn.createStatement();
-            statement.execute(query);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+
     // END CREATING TABLE
 
     // ADDING ACCOUNTS
@@ -203,37 +179,6 @@ public class Database {
             statement.setString(2, staff.getName());
             statement.setString(3, staff.getPhoneNo());
             statement.setString(4, staff.getStatus());
-            statement.execute();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-    public void admitPatient(int id) {
-        Date date = Date.valueOf(LocalDate.now());
-        String query = "INSERT INTO Admitted (patient_id,dateAdmitted,bedNo) VALUES (?,?,?)";
-        try (Connection conn = DriverManager.getConnection(url, username, password)) {
-            PreparedStatement statement = conn.prepareStatement(query);
-            statement.setInt(1, id);
-            statement.setDate(2, date);
-            statement.setInt(3, getBeds());
-            setBeds(getBeds()-1);
-            statement.execute();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-    // public void getAdmittedPatient(int id){
-
-    // }
-    public void dischargePatient(int id, String reason){
-        Date date = Date.valueOf(LocalDate.now());
-        String query = "INSERT INTO Discharged (patient_id,dateDischarged,bedNo, ) VALUES (?,?,?)";
-        try (Connection conn = DriverManager.getConnection(url, username, password)) {
-            PreparedStatement statement = conn.prepareStatement(query);
-            statement.setInt(1, id);
-            statement.setDate(2, date);
-            statement.setInt(3, getBeds());
-            setBeds(getBeds()-1);
             statement.execute();
         } catch (Exception e) {
             e.printStackTrace();
@@ -821,5 +766,106 @@ public class Database {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void createAdmittedTable() {
+        /**
+         * Admitted ( patient_id integer PRIMARY KEY, name text NOT NULL, phoneNo text,
+         * age integer, address text, symptoms text, prescription text, bill real)
+         */
+        String query = "CREATE TABLE IF NOT EXISTS Admitted ( patient_id INT PRIMARY KEY, "
+                + " dateAdmitted DATE NOT NULL, bedNo INT NOT NULL);";
+        try (Connection conn = DriverManager.getConnection(url, username, password)) {
+            Statement statement = conn.createStatement();
+            statement.execute(query);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void createDischargedTable() {
+        /**
+         * Admitted ( patient_id integer PRIMARY KEY, name text NOT NULL, phoneNo text,
+         * age integer, address text, symptoms text, prescription text, bill real)
+         */
+        String query = "CREATE TABLE IF NOT EXISTS Discharged ( patient_id INT PRIMARY KEY, "
+                + " dateDischarged DATE NOT NULL, bedNo INT NOT NULL, reason VARCHAR(55) );";
+        try (Connection conn = DriverManager.getConnection(url, username, password)) {
+            Statement statement = conn.createStatement();
+            statement.execute(query);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void admitPatient(int id) {
+        Date date = Date.valueOf(LocalDate.now());
+        String query = "INSERT INTO Admitted (patient_id,dateAdmitted,bedNo) VALUES (?,?,?)";
+        try (Connection conn = DriverManager.getConnection(url, username, password)) {
+            PreparedStatement statement = conn.prepareStatement(query);
+            statement.setInt(1, id);
+            statement.setDate(2, date);
+            statement.setInt(3, getBeds());
+            setBeds(getBeds() - 1);
+            statement.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void dischargePatient(int id, String reason) {
+        Date date = Date.valueOf(LocalDate.now());
+        String query = "INSERT INTO Discharged (patient_id,dateDischarged,bedNo, reason) VALUES (?,?,?,?)";
+        try (Connection conn = DriverManager.getConnection(url, username, password)) {
+            PreparedStatement statement = conn.prepareStatement(query);
+            statement.setInt(1, id);
+            statement.setDate(2, date);
+            statement.setInt(3, getBeds());
+            setBeds(getBeds() + 1);
+            statement.setString(4, reason);
+            statement.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public ArrayList<AdmittedPatient> getAdmittedPatients() {
+        String query = "SELECT id, name, age, phoneNo, address, symptoms, dateAdmitted, bedNo FROM patients INNER JOIN admitted ON id = patient_id";
+        AdmittedPatient temp = null;
+        ArrayList<AdmittedPatient> list = new ArrayList<>();
+        try (Connection conn = DriverManager.getConnection(url, username, password)) {
+            Statement statement = conn.createStatement();
+            ResultSet results = statement.executeQuery(query);
+            while (results.next()) {
+                temp = new AdmittedPatient(results.getString("name"), results.getInt("age"),
+                        results.getString("phoneNo"), results.getString("address"), results.getString("symptoms"),
+                        results.getInt("id"), results.getDate("dateAdmitted").toLocalDate(), results.getInt("bedNo"));
+                list.add(temp);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    public ArrayList<DischargedPatient> getDischargedPatients() {
+        String query = "SELECT id, name, age, phoneNo, address, symptoms, dateDischarged, bedNo, reason " +
+        "FROM patients INNER JOIN discharged ON id = patient_id";
+        DischargedPatient temp = null;
+        ArrayList<DischargedPatient> list = new ArrayList<>();
+        try (Connection conn = DriverManager.getConnection(url, username, password)) {
+            Statement statement = conn.createStatement();
+            ResultSet results = statement.executeQuery(query);
+            while (results.next()) {
+                temp = new DischargedPatient(results.getString("name"), results.getInt("age"),
+                        results.getString("phoneNo"), results.getString("address"), results.getString("symptoms"),
+                        results.getInt("id"), results.getDate("dateAdmitted").toLocalDate(),
+                        results.getInt("bedNo"), results.getString("reason"));
+                list.add(temp);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
     }
 }

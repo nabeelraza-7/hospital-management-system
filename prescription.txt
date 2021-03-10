@@ -1,23 +1,21 @@
 ================================= Medical Report =================================
 
-Patient ID: 18
-Name:       Ab paka last patient
-Age:        56
-Phone No:   0345-1289469
-Address:    jahan bhi ho mujhe kya
+Patient ID: 19
+Name:       Gotiya
+Age:        80
+Phone No:   0341-8790123
+Address:    lahore
 
 ==================================== Symptoms ====================================
 
-sir dard hai ye -_-
+drug addiction
 
 ================================== Prescription ==================================
 
-fghjg		afsdhgh
-asfgdfh		asfgdfh
-asdfdghf	asfgdhf
+Rehab		15 days in asylum
 
 
-DateTime:   10-03-2021  01:30
+DateTime:   10-03-2021  05:04
 
 ==================================================================================
 

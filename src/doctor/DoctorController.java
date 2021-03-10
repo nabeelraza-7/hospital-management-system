@@ -6,7 +6,6 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXCheckBox;
 
 import javafx.application.Platform;
 import javafx.collections.FXCollections;

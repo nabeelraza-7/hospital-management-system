@@ -4,11 +4,8 @@
 
 package staff;
 
-import java.io.*;
-
 import com.jfoenix.controls.JFXTextField;
 
-import admin.Admin;
 import admin.AdminController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
