@@ -36,36 +36,4 @@ public class Staff extends utilities.Person {
         count = db.getLastStaffId() + 1;
     }
 
-    public void writeToFile() {
-        /**
-         * Needed to use the same Object 
-         * creation form (The form that pops up to create a 
-         * person's record in database) to perform editing
-         */
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter("staff.txt"))) {
-            bw.write(getId() + ", " + getName() + ", " + getPhoneNo() + ", " + getStatus() + "\n");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static Staff readFromFile() {
-        /**
-         * Needed to use the same Object 
-         * creation form (The form that pops up to create a 
-         * person's record in database) to perform editing
-         */
-        Staff temp = null;
-        try (BufferedReader br = new BufferedReader(new FileReader("staff.txt"))) {
-            String line = br.readLine();
-            if (line != null) {
-                String[] args = line.split(", ");
-                temp = new Staff(Integer.parseInt(args[0]), args[1], args[2], args[3]);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return temp;
-    }
-
 }

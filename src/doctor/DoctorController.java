@@ -21,6 +21,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import patient.Patient;
+import pdf.CreatePDF;
 import utilities.Database;
 import utilities.FormValidation;
 
@@ -68,34 +69,14 @@ public class DoctorController {
             current.setSymptoms(patSymptoms.getText());
             current.setPrescription(patPrescription.getText() + "\n\nDateTime:   " + formatter.format(date) + "  " + timeFormatter.format(time));
         }
-        writeFile();
-        ProcessBuilder pb = new ProcessBuilder("Notepad.exe", "prescription.txt");
+        CreatePDF.writeToPDF(current);
+        ProcessBuilder pb = new ProcessBuilder("C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe", "prescription.pdf");
         try {
             pb.start();
         } catch (IOException e) {
             e.printStackTrace();
         }
         saveBtn.setDisable(false);
-    }
-
-    private void writeFile() {
-
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("prescription.txt"))) {
-            writer.write("================================= Medical Report =================================\n\n");
-            writer.write("Patient ID: " + current.getId() + "\n");
-            writer.write("Name:       " + current.getName() + "\n");
-            writer.write("Age:        " + current.getAge() + "\n");
-            writer.write("Phone No:   " + current.getPhoneNo() + "\n");
-            writer.write("Address:    " + current.getAddress() + "\n");
-            writer.write("==================================== Symptoms ====================================\n\n");
-            writer.write(current.getSymptoms() + "\n\n");
-            writer.write("================================== Prescription ==================================\n\n");
-            writer.write(current.getPrescription() + "\n\n");
-            writer.write("==================================================================================\n\n");
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     @FXML
@@ -203,7 +184,7 @@ public class DoctorController {
     @FXML
     void addToPrescription(ActionEvent event) {
         if (!(medicine.getText().isEmpty() && duration.getText().isEmpty())) {
-            patPrescription.appendText(medicine.getText() + "\t\t" + duration.getText() + "\n");
+            patPrescription.appendText(medicine.getText() + "            " + duration.getText() + "\n");
         }
         medicine.setText("");
         duration.setText("");

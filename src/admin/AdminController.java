@@ -35,6 +35,7 @@ import javafx.util.StringConverter;
 import patient.AdmittedPatient;
 import patient.DischargedPatient;
 import patient.Patient;
+import pdf.CreatePDF;
 import receptionist.Receptionist;
 import staff.Staff;
 import utilities.Database;
@@ -740,28 +741,10 @@ public class AdminController {
             temp = tempSearch;
         }
         // FormValidation.showInformation("Prescription", temp.getPrescription());
-        writeFile(temp);
-        ProcessBuilder pb = new ProcessBuilder("Notepad.exe", "prescription.txt");
+        CreatePDF.writeToPDF(temp);
+        ProcessBuilder pb = new ProcessBuilder("C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe", "prescription.pdf");
         try {
             pb.start();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void writeFile(Patient temp) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("prescription.txt"))) {
-            writer.write("================================= Medical Report =================================\n\n");
-            writer.write("Patient ID: " + temp.getId() + "\n");
-            writer.write("Name:       " + temp.getName() + "\n");
-            writer.write("Age:        " + temp.getAge() + "\n");
-            writer.write("Phone No:   " + temp.getPhoneNo() + "\n");
-            writer.write("Address:    " + temp.getAddress() + "\n\n");
-            writer.write("==================================== Symptoms ====================================\n\n");
-            writer.write(temp.getSymptoms() + "\n\n");
-            writer.write("================================== Prescription ==================================\n\n");
-            writer.write(temp.getPrescription() + "\n\n");
-            writer.write("==================================================================================\n\n");
         } catch (Exception e) {
             e.printStackTrace();
         }

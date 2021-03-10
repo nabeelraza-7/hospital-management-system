@@ -1,6 +1,5 @@
 package doctor;
 
-import java.io.*;
 import java.time.LocalTime;
 
 import utilities.Database;
@@ -79,37 +78,4 @@ public class Doctor extends utilities.AuthenticAccount {
         // and gives it to the count variable
         count = db.getLastDoctorId() + 1;
     }
-
-    public void writeToFile() {
-        /**
-         * Needed to use the same Object creation form (The form that pops up to create
-         * a person's record in database) to perform editing
-         */
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter("doctor.txt"))) {
-            bw.write(getId() + ", " + getName() + ", " + getPhoneNo() + ", " + getEmail() + ", " + getPassword() + ", "
-                    + specialization + ", " + timeFrom + ", " + timeTo + "\n");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static Doctor readFromFile() {
-        /**
-         * Needed to use the same Object creation form (The form that pops up to create
-         * a person's record in database) to perform editing
-         */
-        Doctor temp = null;
-        try (BufferedReader br = new BufferedReader(new FileReader("doctor.txt"))) {
-            String line = br.readLine();
-            if (line != null) {
-                String[] args = line.split(", ");
-                temp = new Doctor(Integer.parseInt(args[0]), args[1], args[2], args[3], args[4], args[5],
-                        LocalTime.parse(args[6]), LocalTime.parse(args[7]));
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return temp;
-    }
-
 }

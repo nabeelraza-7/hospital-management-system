@@ -1,7 +1,5 @@
 package patient;
 
-import java.io.*;
-
 import utilities.Database;
 
 public class Patient extends utilities.Person {
@@ -108,36 +106,4 @@ public class Patient extends utilities.Person {
         count = db.getLastPatientId() + 1;
     }
 
-    public void writeToFile() {
-        /**
-         * Needed to use the same Object creation form (The form that pops up to create
-         * a person's record in database) to perform editing
-         */
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter("patient.txt"))) {
-            bw.write(getId() + ", " + getName() + ", " + age + ", " + getPhoneNo() + ", " + address + ", " + symptoms
-                    + ", " + prescription + ", " + bill + ", " + checked + "\n");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static Patient readFromFile() {
-        /**
-         * Needed to use the same Object creation form (The form that pops up to create
-         * a person's record in database) to perform editing
-         */
-        Patient temp = null;
-        try (BufferedReader br = new BufferedReader(new FileReader("patient.txt"))) {
-            String line = br.readLine();
-            if (line != null) {
-                System.out.println(line);
-                String[] args = line.split(", ");
-                temp = new Patient(Integer.parseInt(args[0]), args[1], Integer.parseInt(args[2]), args[3], args[4],
-                        args[5], args[6], Double.parseDouble(args[7]), Boolean.parseBoolean(args[8]));
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return temp;
-    }
 }
