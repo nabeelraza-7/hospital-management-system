@@ -1,7 +1,5 @@
 package staff;
 
-import java.io.*;
-
 import utilities.Database;
 
 public class Staff extends utilities.Person {

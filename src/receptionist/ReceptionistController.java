@@ -1,13 +1,10 @@
 package receptionist;
 
-import java.io.BufferedWriter;
-
 // Methods to create, read, update, delete Patient records
 // Change the number of beds
 // Methods to create, read, update, delete Appointment records
 
 import java.io.File;
-import java.io.FileWriter;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 

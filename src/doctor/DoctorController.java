@@ -67,10 +67,10 @@ public class DoctorController {
             current.setName(patName.getText());
             current.setAge(Integer.parseInt(patAge.getText()));
             current.setSymptoms(patSymptoms.getText());
-            current.setPrescription(patPrescription.getText() + "\n\nDateTime:   " + formatter.format(date) + "  " + timeFormatter.format(time));
+            current.setPrescription(patPrescription.getText() + "\n\nDate & Time:   " + formatter.format(date) + "  " + timeFormatter.format(time));
         }
         CreatePDF.writeToPDF(current);
-        ProcessBuilder pb = new ProcessBuilder("C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe", "prescription.pdf");
+        ProcessBuilder pb = new ProcessBuilder("C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe", "file:///E:/Hospital%20Management%20System/Hospital%20Management%20System/prescription.pdf");
         try {
             pb.start();
         } catch (IOException e) {
@@ -86,7 +86,7 @@ public class DoctorController {
             current.setName(patName.getText());
             current.setAge(Integer.parseInt(patAge.getText()));
             current.setSymptoms(patSymptoms.getText());
-            current.setPrescription(patPrescription.getText() + "\n\nDateTime:   " + formatter.format(date) + "  " + timeFormatter.format(time));
+            current.setPrescription(patPrescription.getText() + "\n\nDate & Time:   " + formatter.format(date) + "  " + timeFormatter.format(time));
             db.editPatient(current);
             FormValidation.showInformation("Save", "Patient's Record has been saved!");
             list.remove(index - 1);
@@ -197,7 +197,7 @@ public class DoctorController {
             current.setName(patName.getText());
             current.setAge(Integer.parseInt(patAge.getText()));
             current.setSymptoms(patSymptoms.getText());
-            current.setPrescription(patPrescription.getText() + "\n\nDateTime:   " + formatter.format(date) + "  " + timeFormatter.format(time));
+            current.setPrescription(patPrescription.getText() + "\n\nDate & Time:   " + formatter.format(date) + "  " + timeFormatter.format(time));
             db.editPatient(current);
             db.admitPatient(current.getId());
             FormValidation.showInformation("Note", "Patient has been admitted!");
