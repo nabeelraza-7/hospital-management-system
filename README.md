@@ -1,2 +1,11 @@
 ## Hospital Management System
 
+OOP Project.
+
+# Things I learned: 
+  
+  - How to make reuseable code
+  - How to use MySQL database 
+  - How to use SceneBuilder
+  - How to make the UI more attractive
+  - How to implement Login/Registration process.
