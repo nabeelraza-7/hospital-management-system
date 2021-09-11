@@ -9,3 +9,4 @@ OOP Project.
   - How to use SceneBuilder
   - How to make the UI more attractive
   - How to implement Login/Registration process.
+  - How to not cry after a long hard day at work
