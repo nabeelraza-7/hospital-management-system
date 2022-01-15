@@ -2,6 +2,11 @@
 
 OOP Project.
 
+# Tools used
+  - JavaFX
+  - MySQL
+  - SceneBuilder
+
 # Things I learned: 
   
   - How to make reuseable code
